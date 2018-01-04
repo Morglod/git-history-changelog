@@ -9,7 +9,7 @@ import { Store } from './store';
  * * `onlyLastCommit` - pick only last (top) commit
  */
 export declare function parseUntrackedCommits(store: Store, {path, branchName, onlyLastCommit}: {
-    path: string;
+    path?: string;
     branchName?: string;
     onlyLastCommit?: boolean;
 }): Promise<ParsedHistoryCommit[]>;
