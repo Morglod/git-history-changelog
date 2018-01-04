@@ -20,7 +20,7 @@ export type RenderChangelogMessageFunc = (category: string, message: string) => 
 export type RenderedMessages = { [categoryName: string]: string[] };
 export type RenderChangelogFunc = (messages: RenderedMessages) => string
 
-export function renderChangelog({
+export function renderChangelog(store: Store, {
     entries,
     categories,
     messageRenderer = renderChangelogMessage,

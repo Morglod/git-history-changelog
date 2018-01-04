@@ -6,7 +6,7 @@ export declare type RenderedMessages = {
     [categoryName: string]: string[];
 };
 export declare type RenderChangelogFunc = (messages: RenderedMessages) => string;
-export declare function renderChangelog({entries, categories, messageRenderer, changelogRenderer}: {
+export declare function renderChangelog(store: Store, {entries, categories, messageRenderer, changelogRenderer}: {
     entries: ChangelogEntry[];
     categories: 'all' | string[];
     messageRenderer?: RenderChangelogMessageFunc;

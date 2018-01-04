@@ -10,7 +10,7 @@ import { Store } from './store';
  * * `trackedBranches` - if not privded, all commits will be parsed  
  * * `onlyLastCommit` - pick only last (top) commit
  */
-async function parseUntrackedCommits(store: Store, {
+export async function parseUntrackedCommits(store: Store, {
     path,
     branchName,
     onlyLastCommit
@@ -79,7 +79,7 @@ async function parseUntrackedCommits(store: Store, {
     });
 }
 
-async function parseCommit(commit: Git.Commit, branchName: string): Promise<ParsedHistoryCommit> {
+export async function parseCommit(commit: Git.Commit, branchName: string): Promise<ParsedHistoryCommit> {
     return {
         datetimeUTC: commit.time(),
         authorName: commit.author().name,
@@ -91,7 +91,7 @@ async function parseCommit(commit: Git.Commit, branchName: string): Promise<Pars
     }
 }
 
-async function listCommitFiles(commit: Git.Commit): Promise<string[]> {
+export async function listCommitFiles(commit: Git.Commit): Promise<string[]> {
     const files: string[] = [];
 
     const tree = await commit.getTree();
