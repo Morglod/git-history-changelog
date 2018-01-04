@@ -1,4 +1,5 @@
 import * as Git from 'nodegit';
+import * as NodePath from 'path';
 import { EventEmitter } from 'events';
 import { TrackedBranches, ParsedHistoryCommit } from './types';
 import { Store } from './store';
@@ -11,11 +12,11 @@ import { Store } from './store';
  * * `onlyLastCommit` - pick only last (top) commit
  */
 export async function parseUntrackedCommits(store: Store, {
-    path,
+    path = NodePath.resolve('./'),
     branchName,
     onlyLastCommit
 }: {
-    path: string,
+    path?: string,
     branchName?: string,
     onlyLastCommit?: boolean
 }): Promise<ParsedHistoryCommit[]> {

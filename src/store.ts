@@ -16,6 +16,12 @@ export class Store {
     data: GitHistoryType = { ...blankConfig }
     autosave: boolean = false;
 
+    async clearChangelog() {
+        this.data.changelog = [];
+        await this.autoSave();
+        return;
+    }
+
     async save(): Promise<true> {
         return new Promise<true>((resolve, reject) => {
             fs.writeFile(this.filename, JSON.stringify(this.data), (err) => {
