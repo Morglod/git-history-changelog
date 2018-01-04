@@ -2,9 +2,10 @@
   "name": "git-history-changelog",
   "version": "0.0.1",
   "description": "changelog builder from git history",
-  "main": "./lib/main.js",
+  "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "keywords": [
     "git",

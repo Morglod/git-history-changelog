@@ -9,7 +9,7 @@ export type ParsedHistoryCommit = {
 }
 
 export type UnreleasedCommitMessages = {
-    [categoryName: string]: string
+    [categoryName: string]: string[]
 }
 
 export type UnreleasedChangelogCommit = {
@@ -21,7 +21,7 @@ export type UnreleasedChangelogCommit = {
 }
 
 export type ChangelogMessages = {
-    [categoryName: string]: string
+    [categoryName: string]: string[]
 };
 
 export type ChangelogEntry = {
