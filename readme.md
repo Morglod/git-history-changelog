@@ -118,7 +118,7 @@ async function filterParsedCommits(
 Filter commits, split commit message parts to categories.
 
 * `parsedCommits` - commits that will be filtered.
-* `filter` - filtering and extraction method (check [example](src/example.ts)).
+* `filter` - filtering and extraction method (check [example](src/example/example.ts)).
 * `onlyMarked: false|'onlyMarked'` - pick commits only with `commitToUnreleasedChangelog=true` (all by default)
 
 ### [changelog](src/changelog.ts)
