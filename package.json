@@ -1,7 +1,7 @@
 {
   "name": "git-history-changelog",
-  "version": "0.0.1",
-  "description": "changelog builder from git history",
+  "version": "0.0.2",
+  "description": "changelog builder framework from git history",
   "main": "./lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,5 +20,9 @@
     "@types/node": "^8.5.5",
     "@types/nodegit": "^0.18.5",
     "nodegit": "^0.20.3"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/Morglod/git-history-changelog.git"
   }
 }
