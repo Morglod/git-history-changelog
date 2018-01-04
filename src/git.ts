@@ -56,7 +56,7 @@ export async function parseUntrackedCommits(store: Store, {
             const commitHash = commit.id().tostrS();
             if (store.data.trackedBranches[branchName!].lastCommitHash === commitHash) {
                 stopParse = true;
-                history.stop();
+                // history.stop();
                 return;
             }
             
