@@ -7,7 +7,7 @@ Uses [nodegit](http://www.nodegit.org/).
 * Split commit messages to custom categories.
 * By default all stages autosaves in local config (check Store object).
 * You can provide your render and filtering methods.
-* Framework care and track braches.
+* Framework care and track branches.
 
 ## [Example](src/example/example.ts)
 
