@@ -26,10 +26,12 @@ Branch: refs/heads/master, 2018-1-7 06:00:38
 * custom message types now passing through mapping/formatting methods  
 ## new  
 * reduceUnreleasedCommits, groupEveryKeyByKeys methods added  
+
 # 0.0.3  
 ## log  
 * link fixed in readme  
 * repo updated  
+
 # 0.0.1  
 ## dev  
 * readme added  

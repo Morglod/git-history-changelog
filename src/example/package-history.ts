@@ -45,7 +45,8 @@ async function main() {
             Object.entries(categorized).map(([ category, messages ]) => [
                 `## ${category}`,
                 messages.map(message => `* ${message}`)
-            ])
+            ]),
+            ''
         ])
     ])).join('  \n---  \n');
 
