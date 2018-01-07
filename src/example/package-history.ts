@@ -37,7 +37,7 @@ async function main() {
     }));
     const changelog = await ghc.toChangelog(store, grouped2);
 
-    const rendered = changelog.map(entry => join_markdown([
+    const rendered = (store.data.changelog as typeof changelog).sort((a, b) => b.datetimeUTC - a.datetimeUTC).map(entry => join_markdown([
         `Branch: ${entry.branchName}, ${new Date(entry.datetimeUTC * 1000).toLocaleString()}`,
         '',
         Object.entries(entry.messages).map(([ packageVersion, categorized ]) => [

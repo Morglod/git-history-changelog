@@ -2,17 +2,33 @@
   "repository": "./",
   "trackedBranches": {
     "refs/heads/master": {
-      "lastCommitDateTimeUTC": 1515047223,
-      "lastCommitHash": "b9860a4c54636d45cd6b7e3e5db5525043852ec4"
+      "lastCommitDateTimeUTC": 1515294038,
+      "lastCommitHash": "3f7ca95932d3b29a69029031d23b084f8b16f77b"
     }
   },
   "parsedHistory": [],
   "unreleasedChangelog": [],
   "changelog": [
     {
-      "datetimeUTC": 1515047223,
+      "datetimeUTC": 1515294038,
       "branchName": "refs/heads/master",
       "messages": {
+        "0.1.0": {
+          "example": [
+            "package-history added"
+          ],
+          "critical": [
+            "Store now handles Git.Repository instance",
+            "openOrCreate now with reposity path argument",
+            "filterParsedCommits renamed to formatParsedCommits"
+          ],
+          "log": [
+            "custom message types now passing through mapping/formatting methods"
+          ],
+          "new": [
+            "reduceUnreleasedCommits, groupEveryKeyByKeys methods added"
+          ]
+        },
         "0.0.4": {
           "log": [
             "."

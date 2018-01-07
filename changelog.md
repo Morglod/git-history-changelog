@@ -1,5 +1,16 @@
-Branch: refs/heads/master, 2018-1-4 09:27:03  
+Branch: refs/heads/master, 2018-1-7 06:00:38  
   
+# 0.1.0  
+## example  
+* package-history added  
+## critical  
+* Store now handles Git.Repository instance  
+* openOrCreate now with reposity path argument  
+* filterParsedCommits renamed to formatParsedCommits  
+## log  
+* custom message types now passing through mapping/formatting methods  
+## new  
+* reduceUnreleasedCommits, groupEveryKeyByKeys methods added  
 # 0.0.4  
 ## log  
 * .  
