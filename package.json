@@ -1,10 +1,9 @@
 {
   "name": "git-history-changelog",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "changelog builder framework from git history",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
   "keywords": [
@@ -22,7 +21,10 @@
     "nodegit": "^0.20.3"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/Morglod/git-history-changelog.git"
+    "type": "git",
+    "url": "https://github.com/Morglod/git-history-changelog.git"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.2"
   }
 }

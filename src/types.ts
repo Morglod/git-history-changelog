@@ -8,26 +8,26 @@ export type ParsedHistoryCommit = {
     commitToUnreleasedChangelog: boolean
 }
 
-export type UnreleasedCommitMessages = {
-    [categoryName: string]: string[]
+export type UnreleasedCommitMessages<MessageT = any> = {
+    [categoryName: string]: MessageT
 }
 
-export type UnreleasedChangelogCommit = {
+export type UnreleasedChangelogCommit<UnreleasedCommitMessagesT = UnreleasedCommitMessages> = {
     authorName: string,
     datetimeUTC: number,
     branchName: string,
     commitHash: string,
-    messages: UnreleasedCommitMessages
+    messages: UnreleasedCommitMessagesT
 }
 
-export type ChangelogMessages = {
-    [categoryName: string]: string[]
+export type ChangelogMessages<MessageT = any> = {
+    [categoryName: string]: MessageT
 };
 
-export type ChangelogEntry = {
+export type ChangelogEntry<ChangelogMessagesT = ChangelogMessages> = {
     datetimeUTC: number,
     branchName: string,
-    messages: ChangelogMessages
+    messages: ChangelogMessagesT
 }
 
 export type TrackedBranches = {
@@ -38,6 +38,8 @@ export type TrackedBranches = {
 }
 
 export type GitHistoryType = {
+    /** path to repository */
+    repository: string,
     trackedBranches: TrackedBranches,
     parsedHistory: ParsedHistoryCommit[],
     unreleasedChangelog: UnreleasedChangelogCommit[],

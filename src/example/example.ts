@@ -2,11 +2,11 @@ import * as ghc from '../index';
 import * as fs from 'fs';
 
 async function main() {
-    const store = await ghc.Store.openOrCreate('./changelog.json', 'autosave');
-    const parsedCommits = await ghc.parseUntrackedCommits(store, { path: './' });
-    const filtered = await ghc.filterParsedCommits(store, parsedCommits, (x) => {
+    const store = await ghc.Store.openOrCreate('./changelog.json', './', 'autosave');
+    const parsedCommits = await ghc.parseUntrackedCommits(store);
+    const formatted = await ghc.formatParsedCommits(store, parsedCommits, (x) => {
         const messages = x.message.split(';').map(y => y.trim());
-        const categorized: ghc.ChangelogMessages = {};
+        const categorized: ghc.ChangelogMessages<string[]> = {};
         const defaultCategory = 'log';
 
         for (const msg of messages) {
@@ -18,7 +18,7 @@ async function main() {
 
         return categorized;
     });
-    const changelog = await ghc.toChangelog(store, filtered);
+    const changelog = await ghc.toChangelog(store, formatted);
     const rendered = ghc.renderChangelog(store, {
         entries: changelog,
         categories: 'all',

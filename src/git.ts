@@ -6,21 +6,18 @@ import { Store } from './store';
 
 /**
  * Parse untracked commits  
- * * `path` - absolute path to repository
  * * `branchName` - target branch name; will be used current by default
  * * `trackedBranches` - if not privded, all commits will be parsed  
  * * `onlyLastCommit` - pick only last (top) commit
  */
 export async function parseUntrackedCommits(store: Store, {
-    path = NodePath.resolve('./'),
     branchName,
     onlyLastCommit
 }: {
-    path?: string,
     branchName?: string,
     onlyLastCommit?: boolean
-}): Promise<ParsedHistoryCommit[]> {
-    const repo = await Git.Repository.open(path);
+} = {}): Promise<ParsedHistoryCommit[]> {
+    const { repo } = store;
     const branchRef = await (branchName ? repo.getBranch(branchName) : repo.getCurrentBranch());
     if (!branchName) branchName = branchRef.name();
     const commit = await repo.getBranchCommit(branchRef);
@@ -98,6 +95,7 @@ export async function listCommitFiles(commit: Git.Commit): Promise<string[]> {
     const tree = await commit.getTree();
     const walker = tree.walk() as any;
     walker.on('entry', (entry: Git.TreeEntry) => {
+        const entrySha = entry.oid();
         files.push(entry.path());
     });
 
@@ -107,4 +105,19 @@ export async function listCommitFiles(commit: Git.Commit): Promise<string[]> {
         });
         walker.start();
     });
+}
+
+export async function fileContentBlob(store: Store, commitHash: string, filePath: string): Promise<Git.Blob> {
+    const commit = await store.repo.getCommit(Git.Oid.fromString(commitHash));
+    const tree = await commit.getTree();
+    const entry = await tree.entryByPath(filePath);
+    return Git.Blob.lookup(store.repo, entry.id());
+}
+
+export async function fileContentBuffer(store: Store, commitHash: string, filePath: string): Promise<Buffer> {
+    return (await fileContentBlob(store, commitHash, filePath)).content();
+}
+
+export async function fileContentString(store: Store, commitHash: string, filePath: string): Promise<string> {
+    return (await fileContentBlob(store, commitHash, filePath)).content().toString();
 }

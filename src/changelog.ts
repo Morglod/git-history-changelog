@@ -1,8 +1,8 @@
-import { UnreleasedChangelogCommit, ChangelogEntry } from './types';
+import { UnreleasedChangelogCommit, UnreleasedCommitMessages, ChangelogMessages, ChangelogEntry } from './types';
 import { Store } from './store';
 
-export async function toChangelog(store: Store, commits: UnreleasedChangelogCommit[]): Promise<ChangelogEntry[]> {
-    const mapped = commits.map(c => ({
+export async function toChangelog<MessagesT = string[]>(store: Store, commits: UnreleasedChangelogCommit<UnreleasedCommitMessages<MessagesT>>[]): Promise<ChangelogEntry<ChangelogMessages<MessagesT>>[]> {
+    const mapped: ChangelogEntry<ChangelogMessages<MessagesT>>[] = commits.map(c => ({
         datetimeUTC: c.datetimeUTC,
         branchName: c.branchName,
         messages: c.messages
@@ -26,7 +26,7 @@ export function renderChangelog(store: Store, {
     messageRenderer = renderChangelogMessage,
     changelogRenderer = renderChangelogMessages
 }: {
-    entries: ChangelogEntry[],
+    entries: ChangelogEntry<ChangelogMessages<string[]>>[],
     categories: 'all'|string[],
     messageRenderer?: RenderChangelogMessageFunc,
     changelogRenderer?: RenderChangelogFunc
