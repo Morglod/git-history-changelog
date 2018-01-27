@@ -1,8 +1,9 @@
 {
   "name": "git-history-changelog",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "changelog builder framework from git history",
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
